@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>The Concealed ID Token Vocabulary</title>
+    <meta http-equiv='Content-Type' content='text/html;charset=utf-8'/>
+    <!--
+      === NOTA BENE ===
+      For the three scripts below, if your spec resides on dev.w3 you can check them
+      out in the same tree and use relative links so that they'll work offline,
+     -->
+    <script src='https://www.w3.org/Tools/respec/respec-w3c-common' class='remove'></script>
+    <script class='remove'>
+      var respecConfig = {
+          // specification status (e.g. WD, LCWD, NOTE, etc.). If in doubt use ED.
+          specStatus:       "CG-DRAFT",
+
+          // the specification's short name, as in http://www.w3.org/TR/short-name/
+          shortName:        "cit-vocab",
+
+          // if you wish the publication date to be other than today, set this
+          // publishDate:  "2009-08-06",
+
+          // if there is a previously published draft, uncomment this and set its YYYY-MM-DD date
+          // and its maturity status
+          // previousPublishDate:  "1977-03-15",
+          // previousMaturity:  "WD",
+
+          // if there a publicly available Editor's Draft, this is the link
+          edDraftURI:       "https://digitalbazaar.github.io/cit-vocab/",
+
+          // if this is a LCWD, uncomment and set the end of its review period
+          // lcEnd: "2009-08-05",
+
+          // if you want to have extra CSS, append them to this list
+          // it is recommended that the respec.css stylesheet be kept
+          //extraCSS:             ["prettify.css"],
+
+          // editors, add as many as you like
+          // only "name" is required
+          editors:  [
+            { name: "Manu Sporny", url: "http://manu.sporny.org/",
+                company: "Digital Bazaar, Inc.", companyURL: "https://digitalbazaar.com/" },
+          ],
+
+          // authors, add as many as you like.
+          // This is optional, uncomment if you have authors as well as editors.
+          // only "name" is required. Same format as editors.
+
+          authors:  [
+            { name: "Your Name", url: "http://example.org/",
+                company: "Your Company", companyURL: "http://example.com/" },
+          ],
+          github: "https://github.com/w3c-ccg/cit-vocab/",
+
+          // extend the bibliography entries
+          //localBiblio: webpayments.localBiblio,
+
+          // name of the WG
+          wg:       "Credentials Community Group",
+
+          // URI of the public WG page
+          wgURI:    "https://digitalbazaar.github.io/",
+
+          // name (with the @w3c.org) of the public mailing to which comments are due
+          wgPublicList: "public-credentials@w3c.org",
+
+          // URI of the patent status for this WG, for Rec-track documents
+          // !!!! IMPORTANT !!!!
+          // This is important for Rec-track documents, do not copy a patent URI from a random
+          // document unless you know what you're doing. If in doubt ask your friendly neighbourhood
+          // Team Contact.
+          wgPatentURI:  "",
+
+          // Run the following pre-processing commands
+          preProcess: []
+    };
+    </script>
+    <script type="text/javascript" src="prettify.js" class="remove"></script>
+    <script type="text/javascript" src="lang-jsonld.js" class="remove"></script>
+    <script type="text/javascript" class="remove">
+      var oldonload = window.onload;
+      window.onload = function() {
+        if (oldonload) oldonload();
+        prettyPrint();
+      };
+    </script>
+  </head>
+  <body prefix="rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+    rdfs: http://www.w3.org/2000/01/rdf-schema#
+    owl: http://www.w3.org/2002/07/owl#
+    vs: http://www.w3.org/2003/06/sw-vocab-status/ns#
+    sec: https://w3id.org/security#">
+
+    <section id='abstract'>
+      <p>
+This vocabulary is used to express privacy-protecting tokens that are
+designed to be recognized by only the issuing authority, used once,
+circulate in an ecosystem, and not be trackable (except for by the issuing
+authority). These sorts of tokens are useful when the issuing authority
+needs to identify an entity that is interacting in an ecosystem without
+enabling the other actors in the ecosystem to track the entity. Use cases
+where this is useful include: limiting the use of restricted materials and
+medicines by companies and individuals, acquisition of hazardous materials,
+privacy-protecting loyalty programs, and offline scenarios that need to use
+these types of tokens.
+      </p>
+    </section>
+
+    <section id='sotd'>
+      <p>
+This is an experimental vocabulary and is not intended for use in production
+systems by non-experts.
+      </p>
+    </section>
+
+    <section>
+      <h2>Introduction</h2>
+      <p>
+This vocabulary is used to express privacy-protecting tokens that are designed
+to be recognized by only the issuing authority, used once, circulate in an
+ecosystem, and not be trackable (except for by the issuing  authority). These
+sorts of tokens are useful when the issuing authority  needs to identify an
+entity that is interacting in an ecosystem without  enabling the other actors in
+the ecosystem to track the entity. Use cases  where this is useful include:
+limiting the use of restricted materials and  medicines by companies and
+individuals, acquisition of hazardous materials,  privacy-protecting loyalty
+programs, and offline scenarios that need to use  these types of tokens.
+      </p>
+      <p class="issue">
+This entire document is a work in progress and should be considered in beta
+until it is ratified as an official document via the World Wide Web Consortium.
+      </p>
+    </section>
+
+    <section>
+      <h2>Classes</h2>
+
+      <section id="ConcealedIdTokenCredential" about="https://w3id.org/cit#ConcealedIdTokenCredential"
+      typeof="rdfs:Class">
+        <h3>ConcealedIdTokenCredential</h3>
+        <p>
+        </p>
+        <dl>
+          <dt>Status</dt>
+          <dd property="vs:term_status">unstable</dd>
+          <dt>Parent Class</dt>
+          <dd>owl:Thing</dd>
+          <dt>Expected properties</dt>
+          <dd>concealedIdToken</dd>
+        </dl>
+        <pre class="example prettyprint language-jsonld">
+{
+  "@context": "https://www.w3.org/2018/credentials/v1",
+  "type": "VerifiablePresentation",
+  "verifiableCredential": {
+    "@context": [
+      "https://www.w3.org/2018/credentials/v1",
+      "https://w3id.org/cit/v1"
+    ],
+    "type": ["VerifiableCredential", "ConcealedIdTokenCredential"],
+    "issuer": "did:v1:nym:z6MkhNZxXHvf4YMbtZkEkgA9QAz6gN8f9ZtP47EdCEJMF5Hh",
+    "issuanceDate": "2020-07-14T19:23:24Z",
+    "expirationDate": "2020-08-14T19:23:24Z",
+    "credentialSubject": {
+      "concealedIdToken": {
+        "type": "ConcealedIdToken",
+        "payload": "z2w9rxNXLjDkusy3ruzBvzhfPGC1p7djGyHtip4DQNe92PBZdsEZ6CWoZi9CWzbbndoSrtqMLtLqZW4x93Q24fKMSpMFmtB8d4JrMeUQRoDNp3sxENNr",
+        "meta": "zBc4MZmSm9XBmngk"
+      }
+    },
+    "proof": {
+      "type": "Ed25519Signature2020",
+      "created": "2020-02-03T17:23:49Z",
+      "proofValue": "z2aHzbK1XXTEWuEyQoHEmGaa2D32fGxEFEvBKTMtt418htmCWR1w7UrCTLQDgCEmqSXgwNj4cksdDBoLBkdkxBvRtKSaHmVF1T8JRJjKHWQR3wA75UHba768vK",
+      "proofPurpose": "assertionMethod",
+      "verificationMethod": "did:v1:nym:z6MkhNZxXHvf4YMbtZkEkgA9QAz6gN8f9ZtP47EdCEJMF5Hh#z6MkexTPNH9NFaSogyN17dQhm1X5e9ZTgmChE2enWG8r1Tep"
+    }
+  }
+}
+        </pre>
+      </section>
+
+      <section id="ConcealedIdToken" about="https://w3id.org/cit#ConcealedIdToken"
+      typeof="rdfs:Class">
+        <h3>ConcealedIdToken</h3>
+        <p>
+        </p>
+        <dl>
+          <dt>Status</dt>
+          <dd property="vs:term_status">unstable</dd>
+          <dt>Parent Class</dt>
+          <dd>owl:Thing</dd>
+          <dt>Expected properties</dt>
+          <dd>id, type, controller, publicKeyJwk</dd>
+        </dl>
+        <pre class="example prettyprint language-jsonld">
+{
+  "type": "ConcealedIdToken",
+  "payload": "z2w9rxNXLjDkusy3ruzBvzhfPGC1p7djGyHtip4DQNe92PBZdsEZ6CWoZi9CWzbbndoSrtqMLtLqZW4x93Q24fKMSpMFmtB8d4JrMeUQRoDNp3sxENNr",
+  "meta": "zBc4MZmSm9XBmngk"
+}
+          </pre>
+      </section>
+
+    </section>
+
+    <section>
+      <h2>Properties</h2>
+
+      <section id="payload" about="https://w3id.org/cit#payload"
+        typeof="rdf:Property">
+        <h3>payload</h3>
+        <p>
+        </p>
+        <dl>
+          <dt>Status</dt>
+          <dd property="vs:term_status">stable</dd>
+          <dt>Range</dt>
+          <dd>sec:multibase</dd>
+        </dl>
+        <p>
+        </p>
+        <pre class="example prettyprint language-jsonld">
+{
+  "type": "ConcealedIdToken",
+  "payload": "z2w9rxNXLjDkusy3ruzBvzhfPGC1p7djGyHtip4DQNe92PBZdsEZ6CWoZi9CWzbbndoSrtqMLtLqZW4x93Q24fKMSpMFmtB8d4JrMeUQRoDNp3sxENNr",
+  "meta": "zBc4MZmSm9XBmngk"
+}
+        </pre>
+      </section>
+
+      <section id="meta" about="https://w3id.org/cit#meta"
+        typeof="rdf:Property">
+        <h3>meta</h3>
+        <p>
+        </p>
+        <dl>
+          <dt>Status</dt>
+          <dd property="vs:term_status">stable</dd>
+          <dt>Range</dt>
+          <dd>sec:multibase</dd>
+        </dl>
+        <p>
+        </p>
+        <pre class="example prettyprint language-jsonld">
+{
+  "type": "ConcealedIdToken",
+  "payload": "z2w9rxNXLjDkusy3ruzBvzhfPGC1p7djGyHtip4DQNe92PBZdsEZ6CWoZi9CWzbbndoSrtqMLtLqZW4x93Q24fKMSpMFmtB8d4JrMeUQRoDNp3sxENNr",
+  "meta": "zBc4MZmSm9XBmngk"
+}
+        </pre>
+      </section>
+
+    </section>
+  </body>
+</html>
